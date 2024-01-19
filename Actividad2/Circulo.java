@@ -34,7 +34,7 @@ public class Circulo {
 	public double calcularArea(double radio){
 		
 		double area;
-		area = PI * (radio*radio);
+		area = Math.PI * (radio*radio);
 		
 		return area;
 	}
