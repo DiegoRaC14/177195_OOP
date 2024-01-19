@@ -4,8 +4,8 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		Cuadrado miCuadrado = new Cuadrado("cuadrado", 177195/1000);
-		Circulo miCirculo = new Circulo("círculo", 177195/1000);
+		Cuadrado miCuadrado = new Cuadrado("cuadrado", 177195/1000.0);
+		Circulo miCirculo = new Circulo("círculo", 177195/1000.0);
 			
 		
 		System.out.println("El " + miCuadrado.nombreFigura + " tiene perímetro: " + miCuadrado.calcularPerimetro(miCuadrado.lado) + ".");
