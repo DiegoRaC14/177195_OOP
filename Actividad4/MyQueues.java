@@ -45,23 +45,27 @@ public class MyQueues {
         }
     }
     
-    public String invertirCadena(String cadena) {
+    public void invertirCadena(String texto) {
+        System.out.println(""); // Hacer espacio
+        String textoModificado = "";
+
         // Agregar cada carácter de la cadena al final de la cola
-        for (int i = 0; i < cadena.length(); i++) {
-            insert(cadena.charAt(i));
+        for (int i = 0; i < texto.length(); i++) {
+            insert(texto.charAt(i));
         }
 
-        // Crear un StringBuilder para almacenar la cadena invertida
-        StringBuilder cadenaInvertida = new StringBuilder();
-
-        // Sacar cada carácter de la cola y añadirlo al inicio de cadenaInvertida para invertir la cadena
-        while (tail != 0) {
-            char caracter = delete(); // Sacar el carácter de la cola
-            cadenaInvertida.insert(0, caracter); // Insertar el carácter al inicio de cadenaInvertida
+        // Sacar cada carácter de la cola y añadirlo al inicio de textoModificado para invertir la cadena
+        /*for (int i = texto.length() - 1; i >= 0; i--) {
+            textoModificado += delete();
+        }*/     
+        for (int j = texto.length()-1; j >= 0; j--) {
+    			textoModificado += texto.charAt(j);
+  	
         }
 
-        // Devolver la cadena invertida
-        return cadenaInvertida.toString();
+        System.out.println("Frase original: " + texto);
+        System.out.println("Frase invertida: " + textoModificado);
     }
+    
 }
 
