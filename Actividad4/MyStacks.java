@@ -14,56 +14,61 @@ public class MyStacks {
         top = 0; // Al principio la pila está vacía
     }
     
-    public void push(char data) { // Ingresa los datos al stack
-        if (top == MAX) {
-            System.out.println("Stack is full");
+    
+    public void push(char value) {
+        if (top < MAX - 1) {
+            top++;
+            stack[top] = value;
         } else {
-            stack[top] = data; // Insertar el nuevo elemento en la posición top
-            top++; // Actualizar el índice del top
+            System.out.println("Stack is full.");
         }
     }
+    
 
     public char pop() { // Retira los datos
-        if (top == 0) {
-            System.out.println("Stack is empty");
+        if (top == -1) {
+
             return '#'; // Devuelve '#' para indicar que no hay elementos disponibles
         } else {
-            top--; // Decrementar el índice del top antes de extraer el elemento
             char data = stack[top]; // Extraer el elemento del top
+            top--;// Decrementar el índice del top antes de extraer el elemento
             return data;
         }
     }
     
     
-    public String invertirCadena(String cadena) {
-        for (int i = 0; i < cadena.length(); i++) { // Agregar cada carácter de la cadena al stack
-            push(cadena.charAt(i));
+     public String invertirCadena(String cadena) {
+            int longitudArreglo = cadena.length();
+          
+            for (int i = 1; i < longitudArreglo; i++) {
+                push(cadena.charAt(i)); // Usamos el método push que acepta chars
+            }
+            
+            StringBuilder reversed = new StringBuilder();
+            for (int i = 0; i < longitudArreglo; i++) {// Sacar los caracteres del stack
+                reversed.append(pop()); // Usamos el método pop
+            }
+            return reversed.toString();
         }
-
-        // Crear un StringBuilder para almacenar la cadena invertida
-        StringBuilder cadenaInvertida = new StringBuilder();
-
-        while (top != 0) { // Sacar cada carácter del stack y añadirlo al inicio de cadenaInvertida para invertir la cadena
-            char caracter = pop(); // Sacar el carácter del stack
-            cadenaInvertida = cadenaInvertida.insert(0, caracter); // Insertar el carácter al inicio de cadenaInvertida
-        }
-        
-        // Imprimir la cadena invertida
-        System.out.println("Cadena original: " + cadena);
-        System.out.println("Cadena invertida: " + cadenaInvertida.toString());
-        
-        return cadenaInvertida.toString(); // Devolver la cadena invertida
-        
-    }
+     
+     
+     public boolean checarPalindromo(String cadena) {
+         int tamanoCadena = cadena.length();
+      
+         for (int i = 0; i < tamanoCadena / 2; i++) {// Divide la cadena a la mitad 
+             push(cadena.charAt(i));
+         }
+ 
+         int indice = (tamanoCadena + 1) / 2; 
+         for (int i = indice; i < tamanoCadena; i++) {//Iteraciones para ver si cada caracter es el mismo
+             if (cadena.charAt(i) != pop()) {
+            	 return true;
+             }
+         }
+         return false;
+     }
     
-    public void invertirCadena2(String cadena) {
-    	
-    	for (int i = 0; i < cadena.length(); i++) {
-    		
-    		
-    		
-    	}
-    }
-
-
 }
+
+
+
