@@ -10,7 +10,7 @@ public class Circulo {
 	String color;
 	String nombreFigura;
 	
-	//Métodos constructor
+	//Método constructor
 	public Circulo (String color, double radio) {
 		
 		this.color = color;
