@@ -9,8 +9,9 @@ public class Ejecutar {
 		
 		String ANSI_RESET = "\033[0m" ;
 		String ANSI_BLACKB = "\033[1;30m"; //Black bold
+		String ANSI_CYANB = "\033[1;36m"; // Cyan Bold
+		String ANSI_PURPLEBR= "\033[0;95m"; // Purple bright
 		String ANSI_YELLOW = "\033[0;33m";
-		String ANSI_CYANB = "\033[1;36m";
 		String ANSI_WHITEBACK = "\033[47m";  // White background
 		
 		String[] arrAtaques = {"Hydro pump", "Solar beam", "Eruption", "Flamethrower",
@@ -53,7 +54,9 @@ public class Ejecutar {
 		indexPGanador = miAleatorio.pokemonAdvinar(arrPokemones); // Almacena el índice del Pokemon elegido al azar
 		pokemonGanador = arrPokemonesRand[indexPGanador]; // Copia info del Pokemkon elegido al azar
 		
-		System.out.println(pokemonGanador.getNombre());
+		//System.out.println(pokemonGanador.getNombre());
+		System.out.println();
+		System.out.println(ANSI_PURPLEBR + "Nota: Recuerda que tienes máximo 4 intentos y al 5to debes advinar el nombre" + ANSI_RESET);
 
 		System.out.println();
 		System.out.print(ANSI_CYANB + "Intento 1:" + ANSI_RESET);

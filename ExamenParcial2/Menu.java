@@ -48,7 +48,7 @@ public class Menu {
 				System.out.println("1: Agua");
 				System.out.println("2: Fuego");
 				System.out.println("3: Planta");
-				System.out.print("Elección: ");
+				System.out.print("Elección (ingresa un número entero): ");
 				opcion = sc.nextInt();
 			
 				tipoPokemon(opcion, arrPokemonesRand, pokemonGanador);
@@ -63,7 +63,7 @@ public class Menu {
 					System.out.println(contador+ ": " + ataque);
 					contador++;
 				}
-				System.out.print("Elección: ");
+				System.out.print("Elección (ingresa un número entero): ");
 				opcion = sc.nextInt();
 				
 				ataquePokemon(opcion, arrPokemonesRand, arrAtaques, pokemonGanador);
@@ -73,7 +73,7 @@ public class Menu {
 			case 3:
 				System.out.println();
 				System.out.println("¿Cuál es el nombre de tu pokemon?");
-				System.out.print("Ingresa el nombre: ");
+				System.out.print("Ingresa el nombre (puede ser en mayúsculas o minúsculas): ");
 				opcionTexto = sc.next();
 				//opcionTexto.toLowerCase();
 				
@@ -83,7 +83,7 @@ public class Menu {
 			case 4:
 				System.out.println();
 				System.out.println(ANSI_REDB + "OJO: ÚLTIMA OPORTUNIDAD" + ANSI_RESET);
-				System.out.print("Ingresa el nombre del Pokemon que creas que sea: ");
+				System.out.print("Ingresa el nombre del Pokemon que creas que es (puede ser en mayúsculas o minúsculas): ");
 				opcionTexto = sc.next();
 				opcionTexto.toLowerCase();
 				
@@ -291,7 +291,7 @@ public class Menu {
 	        
 	    } else {
 	        System.out.println();
-	        System.out.println(ANSI_REDB + "¡Incorrecto!" + ANSI_RESET);
+	        System.out.println(ANSI_REDB + "¡Incorrecto! El pokemon no es: " + opcion + ANSI_RESET);
 
 	        int contador = 0;
 
