@@ -13,8 +13,9 @@ public class Menu {
 	
 	String ANSI_RESET = "\033[0m" ;
 	String ANSI_BLACKB = "\033[1;30m"; //Black bold
-	String ANSI_GREENBACK = "\033[42m";  // Green background
+	String ANSI_GREENB = "\033[1;32m"; // Green bold
 	String ANSI_REDB = "\033[1;31m"; // Red bold
+	String ANSI_GREENBACK = "\033[42m";  // Green background
 	
 	
 	public void mostrarPreguntas (Pokemon[] arrPokemonesRand, int indexPGanador, String [] arrAtaques, Pokemon pokemonGanador, int intento) {
@@ -72,9 +73,9 @@ public class Menu {
 			case 3:
 				System.out.println();
 				System.out.println("¿Cuál es el nombre de tu pokemon?");
-				System.out.print("Elección: ");
+				System.out.print("Ingresa el nombre: ");
 				opcionTexto = sc.next();
-				opcionTexto.toLowerCase();
+				//opcionTexto.toLowerCase();
 				
 				nombrePokemon(opcionTexto, arrPokemonesRand, pokemonGanador);
 				break;
@@ -82,8 +83,7 @@ public class Menu {
 			case 4:
 				System.out.println();
 				System.out.println(ANSI_REDB + "OJO: ÚLTIMA OPORTUNIDAD" + ANSI_RESET);
-				System.out.println("Elige el nombre de un Pokemon");
-				System.out.print("Elección: ");
+				System.out.print("Ingresa el nombre del Pokemon que creas que sea: ");
 				opcionTexto = sc.next();
 				opcionTexto.toLowerCase();
 				
@@ -105,7 +105,7 @@ public class Menu {
 	    
 	    if (pokemonGanador.getTipo().equals(opcionL)) {// Checar si el tipo coincide con la opción que se eligió
 	        System.out.println();
-	        System.out.println("¡Correcto! Te vas acercando");
+	        System.out.println(ANSI_GREENB + "¡Correcto! Te vas acercando" + ANSI_RESET);
 	        
 	        int contador = 0;
 
@@ -129,7 +129,7 @@ public class Menu {
 	        
 	    } else {
 	        System.out.println();
-	        System.out.println("¡Incorrecto! El pokemon NO tiene el ataque " + opcionL);
+	        System.out.println(ANSI_REDB + "¡Incorrecto! El pokemon NO tiene el ataque " + opcionL + ANSI_RESET);
 
 	        int contador = 0;
 
@@ -193,7 +193,7 @@ public class Menu {
 	    
 	    if (at1.equals(opcionL) || at2.equals(opcionL) || at3.equals(opcionL) || at4.equals(opcionL)) {
 	        System.out.println();
-	        System.out.println("¡Correcto! Te vas acercando");
+	        System.out.println(ANSI_GREENB + "¡Correcto! Te vas acercando" + ANSI_RESET);
 	        
 	        int contador = 0;
 
@@ -233,7 +233,7 @@ public class Menu {
 	        mostrarMenu(nuevoArregloP); // Mostrar pokemones restantes 
 	    } else {
 	        System.out.println();
-	        System.out.println("¡Incorrecto! El pokemon NO tiene el ataque " + opcionL);
+	        System.out.println(ANSI_REDB + "¡Incorrecto! El pokemon NO tiene el ataque " + opcionL + ANSI_RESET);
 	        
 	        int contador = 0;
 
@@ -279,10 +279,10 @@ public class Menu {
 	 
 		this.nuevoArregloP = arrPokemonesRand;
 		
-	    if (opcion.equalsIgnoreCase(pokemonGanador.getNombre())) { // Usar equalsIgnoreCase para comparar cadenas sin importar mayúsculas o minúsculas
+	    if (opcion.trim().equalsIgnoreCase(pokemonGanador.getNombre())) { // Usar equalsIgnoreCase para comparar cadenas sin importar mayúsculas o minúsculas
 	        System.out.println();
-	        System.out.println(ANSI_GREENBACK + ANSI_BLACKB + "¡Correcto! ¡GANASTEEEEEEEEE!");
-	        System.out.println("El Pokemon era: " + pokemonGanador.getNombre() + pokemonGanador.getTipo() + ANSI_RESET);
+	        System.out.println(ANSI_GREENBACK + ANSI_BLACKB + "¡Correcto! ¡GANASTEEEEEEEEE!" + ANSI_RESET);
+	        System.out.println("El Pokemon era: " + pokemonGanador.getNombre() + pokemonGanador.getTipo());
 	        
 	        System.exit(0); // Terminar el programa
 	        
@@ -291,12 +291,12 @@ public class Menu {
 	        
 	    } else {
 	        System.out.println();
-	        System.out.println("¡Incorrecto!");
+	        System.out.println(ANSI_REDB + "¡Incorrecto!" + ANSI_RESET);
 
 	        int contador = 0;
 
 	        for (Pokemon pokemon : arrPokemonesRand) { // Contar pokemones que no coinciden con el nombre seleccionado
-	            if (!pokemon.getNombre().equalsIgnoreCase(opcion)) {
+	            if (!pokemon.getNombre().trim().equalsIgnoreCase(opcion)) {
 	                contador++;
 	            }
 	        }

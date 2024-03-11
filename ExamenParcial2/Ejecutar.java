@@ -51,9 +51,9 @@ public class Ejecutar {
 		
 		arrPokemonesRand = miAleatorio.desplegarMenuRand(arrPokemones); // Guardar arreglo de pokemones aleatorio e imprimir la lista
 		indexPGanador = miAleatorio.pokemonAdvinar(arrPokemones); // Almacena el índice del Pokemon elegido al azar
-		pokemonGanador = arrPokemonesRand[indexPGanador];
+		pokemonGanador = arrPokemonesRand[indexPGanador]; // Copia info del Pokemkon elegido al azar
 		
-		System.out.println(arrPokemonesRand[indexPGanador].getNombre() + arrPokemonesRand[indexPGanador].getTipo());
+		System.out.println(pokemonGanador.getNombre());
 
 		System.out.println();
 		System.out.print(ANSI_CYANB + "Intento 1:" + ANSI_RESET);
@@ -68,9 +68,8 @@ public class Ejecutar {
 
 		System.out.println();
 		System.out.println();
-		System.out.println(ANSI_BLACKB + ANSI_WHITEBACK + "Perdiste :c");
-		System.out.println("El Pokemon correcto era:");	
-		System.out.print(arrPokemonesRand[indexPGanador].getNombre()+ arrPokemonesRand[indexPGanador].getTipo()+ ANSI_RESET);	
+		System.out.println(ANSI_BLACKB + ANSI_WHITEBACK + "NOOOOOOO...  ¡PERDISTE! :c" + ANSI_RESET);
+		System.out.println("El Pokemon correcto era:" + pokemonGanador.getNombre() + pokemonGanador.getTipo());		
 	}
 
 	
