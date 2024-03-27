@@ -6,7 +6,11 @@ import java.io.*;
 public class Archivos {
 
     Scanner sc = new Scanner(System.in);
-    File archivo;
+     File archivo;
+    
+    public File getArchivo() { // Getter del archivo
+    	return archivo;
+    }
 
     public String obtenerUsername() {
         System.out.println("¿Quién eres?");
@@ -20,8 +24,9 @@ public class Archivos {
     public void crearArchivo(String username) {
         archivo = new File(username + ".txt");
         int[]actualizarNums = {0,0};
+
         try {
-            if (archivo.exists()) {
+            if (archivo.exists()) { // Checa si el archivo existe
                 System.out.println();
                 System.out.println("Bienvenid@ de nuevo " + username + ". Cargando tus datos...");
                 System.out.println();
@@ -30,7 +35,7 @@ public class Archivos {
                     System.out.println("El archivo " + archivo.getName() + " para almacenar tus datos fue creado con éxito.");
                     System.out.println();
                     
-                    try {
+                    try { // Se inicializa el archivo con ceros para que la primera vez para que ya tenga valores
                         FileWriter escritura = new FileWriter(archivo);
                         escritura.write(actualizarNums[0] + System.lineSeparator());
                         escritura.write(actualizarNums[1] + System.lineSeparator());
@@ -49,6 +54,7 @@ public class Archivos {
         }
     }
 
+    
     public void actualizarNumArchivo(int partidasGanadas) {
         int[] actualizarNums = {0, 0}; 
         String contenido;
@@ -64,6 +70,7 @@ public class Archivos {
             }
 
             lectura.close(); // Cerrar el BufferedReader después de su uso
+            
         } catch (IOException | NumberFormatException excepcion) {
             excepcion.getMessage(); 
         }
@@ -82,5 +89,9 @@ public class Archivos {
         System.out.println("Total de partidas ganadas: " + actualizarNums[1]);
         System.out.println("Total de partidas perdidas: " + (actualizarNums[0] - actualizarNums[1]));
     }
+    
+    
+    
 }
+
 

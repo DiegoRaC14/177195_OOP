@@ -24,12 +24,9 @@ public class Ejecutar {
 		Pokemon []arrPokemonesRand = new Pokemon [arrPokemones.length]; // Solo creación arreglo random
 		Pokemon pokemonGanador;
 		int indexPGanador;
-		
-		boolean bandera = true;
-		String nombreArchivo;
-		//int[] numsActualizados = {1,0}; // Arreglo para guardar números del archivo
-				
-				
+		boolean primeraVezPrograma = false; // Variable para no volver a preguntar el nombre de usuario la 2da vez 
+		boolean seguirPrograma; // Variable para almacenar el boolean de menu y ver si sigue el programa
+							
 		arrPokemones[0] = new Agua ("Squirtle", miAleatorio.asignarAtaques(arrAtaques));
 		arrPokemones[1] = new Agua ("Totodile", miAleatorio.asignarAtaques(arrAtaques));
 		arrPokemones[2] = new Agua ("Mudkip", miAleatorio.asignarAtaques(arrAtaques));
@@ -49,11 +46,12 @@ public class Ejecutar {
 		arrPokemones[14] = new Planta ("Sprigatito", miAleatorio.asignarAtaques(arrAtaques));
 		
 		
+		do {
 		System.out.println("¡Bienvenid@ a tu juego favorito...");
 		System.out.println(ANSI_YELLOW + "...ADIVINA QUIÉN DE POKEMONES!" + ANSI_RESET);
 		System.out.println();
 		System.out.println();
-		
+
 		misArchivos.crearArchivo(misArchivos.obtenerUsername()); // Checar si el nombre de usuario ya existe
 		
 		System.out.println("A continuación se muestra tu tablero:");
@@ -67,27 +65,26 @@ public class Ejecutar {
 		
 		System.out.println();
 		System.out.println(ANSI_PURPLEBR + "Nota: Recuerda que tienes máximo 4 intentos y al 5to debes advinar el nombre" + ANSI_RESET);
-
 		System.out.println();
 		
+		miMenu.mostrarPreguntas(arrPokemonesRand, indexPGanador, arrAtaques, pokemonGanador, 1); //Inicia las preguntas, se tiene que mandar primero el arregl o aleatorio
 		
-		System.out.print(ANSI_CYANB + "Intento 1:" + ANSI_RESET);
-		miMenu.mostrarPreguntas(arrPokemonesRand, indexPGanador, arrAtaques, pokemonGanador, 1);
-		
-		if (miMenu.banderaArchivos) {
+		if (miMenu.banderaArchivos) { // Checar si ganó y actualizar el archivo
 			misArchivos.actualizarNumArchivo(1);
-			System.exit(0); // Terminar el programa 	
+			seguirPrograma = miMenu.repetirPrograma();	
+			continue; // Se modifica la condición de seguir y se manda hasta el final para checar el while
 		}
 
 		for (int i = 2; i <= 5; i++) {
-		    System.out.println();
-		    System.out.print(ANSI_CYANB + "Intento " + i + ":" + ANSI_RESET);
-		    int intento = i;
+			int intento;
+			
+		    intento = i;
 		    miMenu.mostrarPreguntas(miMenu.nuevoArregloP, indexPGanador, arrAtaques, pokemonGanador, intento);
 		    
-			if (miMenu.banderaArchivos) {
+			if (miMenu.banderaArchivos) { // Checar si ganó y actualizar el archivo con +1 partida ganada
 				misArchivos.actualizarNumArchivo(1);
-				System.exit(0); // Terminar el programa 	
+				seguirPrograma = miMenu.repetirPrograma(); // Se guarda el boolean que se regresa en repetir programa
+				continue;
 			}
 		}
 		
@@ -96,8 +93,11 @@ public class Ejecutar {
 		System.out.println(ANSI_BLACKB + ANSI_WHITEBACK + "NOOOOOOO...  ¡PERDISTE! :c" + ANSI_RESET);			
 		System.out.println("El Pokemon correcto era:" + pokemonGanador.getNombre() + pokemonGanador.getTipo());	
 			
-		misArchivos.actualizarNumArchivo(0);
+		misArchivos.actualizarNumArchivo(0); // Actualiza el archivo pero con cero partidas ganadas
+		seguirPrograma = miMenu.repetirPrograma();
+	
 		
+		}while (!seguirPrograma);
 	}
 	
 }
