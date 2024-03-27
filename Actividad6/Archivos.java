@@ -6,7 +6,7 @@ import java.io.*;
 public class Archivos {
 
     Scanner sc = new Scanner(System.in);
-     File archivo;
+    private File archivo;
     
     public File getArchivo() { // Getter del archivo
     	return archivo;
