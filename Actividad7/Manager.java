@@ -13,14 +13,14 @@ public class Manager {
 		Fibonacci miSerie = new Fibonacci ();
 		Splitter miSplitter = new Splitter();
 		
-		List <Integer> listaFibonacci = new ArrayList<Integer> ();
+		List <Integer> listaFibonacci = new ArrayList<Integer> (); // Crear listas e inicializarlas
 		List <Integer> listaPares = new ArrayList<Integer> ();
 		List <Integer> listaImpares = new ArrayList<Integer> ();
 		
 		HashMap <List <Integer>, String> miMapa = new HashMap <>(); // Para asignar una clave a cada lista
 		
-		listaFibonacci = miSerie.crearFibonacci(); // Asigna una cadena de texto a la lista 
-		miMapa.put(listaFibonacci, "serieFibonacci"); 
+		listaFibonacci = miSerie.crearFibonacci(); // Guarda la serie de Fibonacci en una lista
+		miMapa.put(listaFibonacci, "serieFibonacci"); // Asigna una cadena de texto a la lista 
 		listaPares = miSplitter.numerosPares(listaFibonacci);
 		miMapa.put(listaPares, "seriePares");
 		listaImpares = miSplitter.numerosImpares(listaFibonacci);
