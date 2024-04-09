@@ -17,7 +17,7 @@ public class Ejecutar {
         
         try {
 	         System.out.println("Ingrese el nombre del archivo que contiene el laberinto.");
-	         System.out.print("(Debe estar en la misma carpeta que el programa): ");
+	         System.out.print("(Debe estar en la misma carpeta que el programa y debe ser .txt): ");
 	         nombreArchivo = sc.nextLine();
 	         Laberinto miLaberinto = new Laberinto(nombreArchivo + ".txt");
 	         
@@ -25,9 +25,9 @@ public class Ejecutar {
 	         miLaberinto.imprimirLaberinto(); // Método para imprimir el laberinto en consola
 	         
 	         
-	         MicroRaton raton = new MicroRaton(laberinto); //Crea un ratón y manda el laberinto obtenido de archivo .txt
+	         Raton raton = new Raton(laberinto); //Crea un ratón y manda el laberinto obtenido de archivo .txt
 	         ArrayList<String> ruta = raton.encontrarRuta(); //Guarda la lista
-	         System.out.println("Movimientos:" + ruta);
+	         //System.out.println("Movimientos:" + ruta);
 	         miArchivo.grabarArchivo(ruta, nombreArchivo);
 	            
 	         sc.close(); // Cerrar el Scanner
