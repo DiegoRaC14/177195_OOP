@@ -14,7 +14,7 @@ public class Archivo {
 		if (archivo.exists()) { // Checa si el archivo existe
 			archivo.delete();
 			System.out.println();
-			System.out.println("El archivo " + archivo.getName() + " ya existía pero fue borrado para actualizar los números.");
+			System.out.println("El archivo " + archivo.getName() + " ya existía pero fue borrado para actualizar las indicaciones.");
 		} else {
 			
 			try {
